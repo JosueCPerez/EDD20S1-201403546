@@ -30,7 +30,17 @@ void Lista_doble::insertar(char * c){
 }
 
 void Lista_doble::eliminar_ultimo(){
-    
+    if(primero == ultimo == NULL){ // NO HAY ELEMENTOS EN LA LISTA
+        std::cout<<"no hay elementos en la lista"<<std::endl;
+    }else if(this->primero == this->ultimo){ // solo hay un nodo en la lista
+        this->primero = NULL;
+        this->ultimo = NULL;
+    }else{
+        nodo * aux = this->ultimo->anterior;
+        this->ultimo->anterior->siguiente = NULL;
+        this->ultimo->anterior = NULL;
+        this->ultimo = aux;
+    }
 }
 
 nodo * Lista_doble::buscar(string palabra){
