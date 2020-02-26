@@ -9,10 +9,10 @@ using namespace std;
 class nodo
 {
     public:
-        char * caracter;
+        char caracter;
         nodo * siguiente;
         nodo* anterior;
-        nodo(char * carc);
+        nodo(char carc);
 
 };
 
@@ -23,9 +23,11 @@ class Lista_doble
         nodo * ultimo;
 
         Lista_doble();
-        void insertar(char * c);
+        void insertar(char c);
         void eliminar_ultimo();
         nodo * buscar(string palabra);
+
+        bool verificar_palabra(nodo * inicio_palabra, string p);
 
 };
 

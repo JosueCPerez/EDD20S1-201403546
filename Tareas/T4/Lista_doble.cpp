@@ -2,7 +2,7 @@
 
 //--- NODO -----------------
 
-nodo::nodo(char * c){
+nodo::nodo(char c){
     this-> caracter = c;
     this->siguiente = NULL;
     this->anterior = NULL;
@@ -16,7 +16,7 @@ Lista_doble::Lista_doble(){
     this->ultimo = NULL;
 }
 
-void Lista_doble::insertar(char * c){
+void Lista_doble::insertar(char c){
     nodo * nuevo = new nodo(c);
 
     if(this->primero == NULL){
@@ -44,5 +44,34 @@ void Lista_doble::eliminar_ultimo(){
 }
 
 nodo * Lista_doble::buscar(string palabra){
+    char  entrada = palabra[0];
+
+    nodo * aux = this->primero;
+
+    while(aux != NULL){
+        if(entrada == aux->caracter){
+            if(this->verificar_palabra(aux,palabra)){
+                return aux;
+            }
+        }else{
+            aux = aux->siguiente;
+        }
+    }
+    return NULL; 
+}
+
+bool Lista_doble::verificar_palabra(nodo * inicio , string p){
+
+    nodo * aux = inicio;
+
+    for(int i =0; i<= p.size; i++){
+        if(aux->caracter == p[i]){ // compara caracter por caracter para ver si es la palabra buscada
+            aux = aux->siguiente;
+        }else{
+            return false; // si no casan los caracteres no es la palabra
+        }
+    }
+
+    return true;
 
 }
